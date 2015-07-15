@@ -137,16 +137,16 @@ function showHand(hand) {
 // var message = message(score);
 // console.log(showHand(hand));
 // console.log(message);
+alert("working");
+$(document).ready(function() {
+  $("deal").on("click", function(){
+    var hand = dealHand(deck, 4);
+    var score = scoreHand(hand);
+    var message = message(score);
 
-// $(document).ready(function() {
-//   $("deal").on("click", function(){
-//     var hand = dealHand(deck, 4);
-//     var score = scoreHand(hand);
-//     var message = message(score);
-//
-//     $(this).find("displayHand").append(showHand(hand));
-//     $(this).find("displayMessage").append(message);
-//   });
-//
-//
-// });
+    $(this).find("displayHand").append(showHand(hand));
+    $(this).find("displayMessage").append(message);
+  });
+
+
+});
