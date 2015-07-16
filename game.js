@@ -103,11 +103,11 @@ function scoreHand(hand) {
 };
 
 
-function message(score){
+function message(score) {
   if(score){
     return "You won!!!";
   }
-  else{
+  else {
     switch(Math.floor(Math.random()*5)){
       case 0: return "nope";
 
@@ -124,7 +124,7 @@ function message(score){
 
 // returns string
 function showHand(hand) {
-  var eachCard = "";
+  var eachCard="";
   for (var i = 0; i < hand.length; i++) {
     eachCard += hand[i].code+" ";
   }
@@ -134,18 +134,33 @@ function showHand(hand) {
 
 // var hand = dealHand(deck, 2);
 // var score = scoreHand(hand);
-// var message = message(score);
+// var msg = message(score);
 // console.log(showHand(hand));
-// console.log(message);
-alert("working");
+// console.log(msg);
+
+
+// alert("working");
+
 $(document).ready(function() {
-  $("deal").on("click", function(){
+  $("#deal").on("click", function(e){
+    e.preventDefault();
+
+    // console.log("hello");
+    //
     var hand = dealHand(deck, 4);
     var score = scoreHand(hand);
-    var message = message(score);
+    var msg = message(score);
+    var handString = showHand(hand);
+    // console.log(hand);
+    var cardDiv = document.getElementById('displayHand').firstChild.nextSibling;
+    var msgDiv = document.getElementById("displayMessage").firstChild;
 
-    $(this).find("displayHand").append(showHand(hand));
-    $(this).find("displayMessage").append(message);
+    cardDiv.innerHTML = showHand(hand);
+    // cardDiv.nodeValue = handString;
+    msgDiv.nodeValue = msg;
+
+    // $(this).find("div .displayHand").append(showHand(hand));
+    // $(this).find(".displayMessage").append('<span>'+msg+'</span>');
   });
 
 
